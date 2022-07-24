@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option csharp_namespace = "CallLog.LocalServer";
+
+package events;
+
+enum Mode {
+    MODE_OPERATIONAL = 0;
+    MODE_TRAINING = 1;
+}
+
+message EventSummary {
+    string id = 1;
+    string name = 2;
+}
+
+message ControllerSummary {
+    string id = 1;
+    string name = 2;
+}
+
+message GetEventsRequest {
+    Mode mode = 1;
+}
+
+message GetEventsResponse {
+    repeated EventSummary events = 1;
+}
+
+message GetControllersRequest {
+    string event_id = 1;
+}
+
+message GetControllersResponse {
+    repeated ControllerSummary controllers = 1;
+}
+
+message LogOnControllerRequest {
+    string event_id = 1;
+    string controller_id = 2;
+}
+
+message LogOnControllerResponse {}
+
+// The greeting service definition.
+service Events {
+  rpc GetEvents (GetEventsRequest) returns (GetEventsResponse);
+  rpc GetControllers (GetControllersRequest) returns (GetControllersResponse);
+  rpc LogOnController (LogOnControllerRequest) returns (LogOnControllerResponse);
+}
+

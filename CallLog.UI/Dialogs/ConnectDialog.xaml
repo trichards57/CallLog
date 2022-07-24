@@ -1,0 +1,25 @@
+﻿<Window x:Class="CallLog.UI.Dialogs.ConnectDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterOwner" Style="{StaticResource DialogStyle}"
+        mc:Ignorable="d" Title="Connection Mode">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
+            <TextBlock Style="{StaticResource DialogText}">Which mode are you working in:</TextBlock>
+            <RadioButton IsChecked="{Binding UseLocalOperational}">Local - Operational</RadioButton>
+            <RadioButton IsChecked="{Binding UseLocalTraining}">Local - Training</RadioButton>
+        </StackPanel>
+        <Button Grid.Row="1" IsDefault="True" Click="ConnectClick">Connect</Button>
+        <Button Grid.Row="1" Grid.Column="1" IsCancel="True">Cancel</Button>
+    </Grid>
+</Window>
